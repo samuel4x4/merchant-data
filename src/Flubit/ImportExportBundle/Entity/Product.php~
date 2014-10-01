@@ -1,0 +1,45 @@
+<?php
+
+namespace Flubit\ImportExportBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="Flubit\ImportExportBundle\Repository\ProductRepository")
+ * 
+ * @author Samuel Chiriluta <samuel.chiriluta@gmail.com>
+ */
+class Product {
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(length=100, nullable=false, unique=true)
+     */
+    protected $title;
+
+    /**
+     * @ORM\Column(length=80, nullable=false)
+     */
+    protected $image;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ProductMerchant", mappedBy="product")
+     */
+    protected $merchants;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ProductIdentifier", mappedBy="product")
+     */
+    protected $identifiers;
+
+    function __toString() {
+        return $this->getTitle() . '';
+    }
+
+}

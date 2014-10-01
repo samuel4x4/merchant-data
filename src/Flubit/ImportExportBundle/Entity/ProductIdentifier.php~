@@ -1,0 +1,41 @@
+<?php
+
+namespace Flubit\ImportExportBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="Flubit\ImportExportBundle\Repository\ProductIdentifierRepository")
+ * 
+ * @author Samuel Chiriluta <samuel.chiriluta@gmail.com>
+ */
+class ProductIdentifier {
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="identifiers")
+     */
+    protected $product;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Identifier", inversedBy="products")
+     */
+    protected $identifier;
+
+    /**
+     * @ORM\Column(length=20, nullable=false)
+     */
+    protected $value;
+
+    function __toString() {
+        return $this->getValue() . '';
+    }
+
+}
+

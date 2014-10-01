@@ -1,0 +1,9 @@
+services:
+  
+    csv_importer:
+        class:      Flubit\ImportExportBundle\Service\CsvImporter
+        arguments:  ['@doctrine.orm.entity_manager']
+  
+    xml_importer:
+        class:      Flubit\ImportExportBundle\Service\XmlImporter
+        arguments:  ['@doctrine.orm.entity_manager']

@@ -1,0 +1,4 @@
+flubit_import_export:
+    resource: "@FlubitImportExportBundle/Controller/"
+    type: annotation 
+    prefix:   /
